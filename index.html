@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishika Tyagi — CRC Certified Medical Coder</title>
+  <meta name="description"
+    content="CRC Certified Medical Coder specializing in HCC, RxHCC, ICD-10-CM coding and Chart Auditing at CorroHealth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #060E1E;
+      --navy2: #0B1628;
+      --navy3: #0F2040;
+      --blue: #1B4F8A;
+      --cyan: #38BDF8;
+      --cyan2: #7DD3FC;
+      --cyan3: #BAE6FD;
+      --gold: #F0B429;
+      --gold2: #FDE68A;
+      --white: #F0F6FF;
+      --muted: #6B8BAF;
+      --muted2: #94A3B8;
+      --card: #0D1E35;
+      --card2: #112240;
+      --border: rgba(56, 189, 248, 0.12);
+      --border2: rgba(56, 189, 248, 0.25);
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Plus Jakarta Sans', sans-serif;
+      --ff-mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--navy);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue);
+      border-radius: 4px;
+    }
+
+    /* ─── ANIMATED BG ─── */
+    .bg-stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-stars span {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: twinkle var(--d, 4s) var(--delay, 0s) infinite alternate ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.05;
+        transform: scale(0.8);
+      }
+
+      100% {
+        opacity: 0.35;
+        transform: scale(1.2);
+      }
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5rem;
+      background: rgba(6, 14, 30, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+
+    nav.scrolled {
+      padding: 0.7rem 5rem;
+    }
+
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.active {
+      color: var(--cyan);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: center;
+      gap: 4rem;
+      padding: 9rem 5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+
+    .hero-orb-1 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(27, 79, 138, 0.5) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+    }
+
+    .hero-orb-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      bottom: 50px;
+      left: 300px;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(240, 180, 41, 0.1);
+      border: 1px solid rgba(240, 180, 41, 0.25);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: slideIn 0.5s ease both;
+    }
+
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(240, 180, 41, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 0 5px rgba(240, 180, 41, 0);
+      }
+    }
+
+    .hero-greeting {
+      font-family: var(--ff-mono);
+      font-size: 0.82rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+      animation: slideIn 0.5s 0.1s ease both;
+    }
+
+    .hero-name {
+      font-family: var(--ff-display);
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      animation: slideIn 0.5s 0.15s ease both;
+    }
+
+    .hero-name em {
+      color: var(--cyan);
+      font-style: normal;
+    }
+
+    .hero-role {
+      font-family: var(--ff-display);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: var(--muted2);
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+      animation: slideIn 0.5s 0.2s ease both;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      animation: slideIn 0.5s 0.25s ease both;
+    }
+
+    .hero-desc strong {
+      color: var(--cyan2);
+      font-weight: 500;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: slideIn 0.5s 0.3s ease both;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-p {
+      background: var(--cyan);
+      color: var(--navy);
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-p:hover {
+      background: var(--cyan2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-o {
+      border: 1px solid var(--border2);
+      color: var(--cyan);
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.85rem;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-o:hover {
+      background: rgba(56, 189, 248, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .btn-d {
+      border: 1px solid rgba(240, 180, 41, 0.4);
+      color: var(--gold);
+      background: rgba(240, 180, 41, 0.06);
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .btn-d:hover {
+      background: rgba(240, 180, 41, 0.14);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(240, 180, 41, 0.18);
+    }
+
+    .btn-d svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      animation: slideIn 0.5s 0.35s ease both;
+    }
+
+    .stat {}
+
+    .stat-n {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--cyan);
+      line-height: 1;
+    }
+
+    .stat-l {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    /* ─── HERO PHOTO ─── */
+    .hero-photo-wrap {
+      position: relative;
+      z-index: 1;
+      animation: slideIn 0.6s 0.2s ease both;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-ring {
+      position: relative;
+      width: 360px;
+      height: 360px;
+    }
+
+    .photo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border2);
+      animation: spin 18s linear infinite;
+    }
+
+    .photo-ring::after {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      border-radius: 50%;
+      border: 1px dashed rgba(56, 189, 248, 0.15);
+      animation: spin 30s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .photo-ring img {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--border2);
+      display: block;
+      filter: contrast(1.05) brightness(1.02);
+    }
+
+    /* floating badge on photo */
+    .photo-badge {
+      position: absolute;
+      bottom: 20px;
+      right: -10px;
+      background: var(--card2);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 0.8rem 1.1rem;
+      backdrop-filter: blur(10px);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .photo-badge-top {
+      font-size: 0.65rem;
+      color: var(--muted2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--ff-mono);
+    }
+
+    .photo-badge-val {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1.2;
+    }
+
+    .photo-badge-sub {
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .photo-badge2 {
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      background: var(--card2);
+      border: 1px solid rgba(240, 180, 41, 0.3);
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      animation: float 5s 1s ease-in-out infinite;
+    }
+
+    .photo-badge2-label {
+      font-size: 0.62rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--ff-mono);
+    }
+
+    .photo-badge2-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section {
+      padding: 7rem 5rem;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .s-tag {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .s-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
+    }
+
+    .s-line {
+      width: 52px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--navy2);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #7A9DC0;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 1.3rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .about-text p em {
+      color: var(--cyan2);
+      font-style: normal;
+    }
+
+    .about-info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+      transition: all 0.25s;
+      cursor: default;
+    }
+
+    .info-row:hover {
+      border-color: var(--border2);
+      transform: translateX(5px);
+    }
+
+    .info-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .info-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info-val {
+      font-size: 0.9rem;
+      color: var(--white);
+      font-weight: 500;
+      margin-top: 0.1rem;
+    }
+
+    /* ─── SKILLS ─── */
+    #skills {
+      background: var(--navy);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .sk-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .sk-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .sk-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .sk-card:hover::before {
+      opacity: 1;
+    }
+
+    .sk-card-number {
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(56, 189, 248, 0.06);
+      position: absolute;
+      top: 0.5rem;
+      right: 1.5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .sk-cat {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.3rem;
+      font-family: var(--ff-mono);
+    }
+
+    .sk-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .sk-tag {
+      background: rgba(56, 189, 248, 0.07);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      color: var(--cyan2);
+      font-size: 0.77rem;
+      padding: 0.32rem 0.8rem;
+      border-radius: 100px;
+      font-family: var(--ff-mono);
+      transition: all 0.2s;
+    }
+
+    .sk-tag:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--border2);
+    }
+
+    /* ─── EXPERIENCE ─── */
+    #experience {
+      background: var(--navy2);
+    }
+
+    .exp-wrap {
+      max-width: 820px;
+    }
+
+    .exp-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-block:last-child {
+      border-bottom: none;
+    }
+
+    .exp-left {}
+
+    .exp-company-name {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: var(--ff-mono);
+    }
+
+    .exp-right {}
+
+    .exp-title-role {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.3rem;
+      line-height: 1.2;
+    }
+
+    .exp-list {
+      list-style: none;
+    }
+
+    .exp-list li {
+      display: flex;
+      gap: 0.9rem;
+      color: #7A9DC0;
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
+      line-height: 1.75;
+    }
+
+    .exp-list li::before {
+      content: '▸';
+      color: var(--cyan);
+      font-size: 0.75rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications {
+      background: var(--navy);
+    }
+
+    .cert-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-c {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-c::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(240, 180, 41, 0.05);
+      pointer-events: none;
+    }
+
+    .cert-c:hover {
+      border-color: rgba(240, 180, 41, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .cert-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: rgba(240, 180, 41, 0.1);
+      border: 1px solid rgba(240, 180, 41, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-issuer {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+
+    .cert-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── EDUCATION ─── */
+    #education {
+      background: var(--navy2);
+    }
+
+    .edu-c {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 700px;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      transition: all 0.3s;
+    }
+
+    .edu-c:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .edu-ico {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .edu-deg {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-school {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .edu-cgpa-pill {
+      display: inline-block;
+      background: rgba(240, 180, 41, 0.12);
+      border: 1px solid rgba(240, 180, 41, 0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.28rem 0.85rem;
+      border-radius: 100px;
+      font-family: var(--ff-mono);
+      margin-bottom: 0.9rem;
+    }
+
+    .edu-courses {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--navy);
+    }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.88rem;
+      transition: all 0.25s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--border2);
+      color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-card svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy2);
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* ─────────────────────────────────────────────
+       ENHANCEMENTS — modern UI / effects
+       ───────────────────────────────────────────── */
+
+    /* scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--gold));
+      z-index: 300;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+      transition: width 0.1s linear;
+    }
+
+    /* cursor spotlight (native cursor stays visible) */
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 460px;
+      height: 460px;
+      margin: -230px 0 0 -230px;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.10) 0%, transparent 60%);
+      transition: opacity 0.4s;
+      will-change: transform;
+    }
+
+    /* faint film-grain / noise overlay */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── NAV: mobile menu ─── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 210;
+    }
+
+    .nav-toggle span {
+      width: 26px;
+      height: 2px;
+      background: var(--cyan);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 205;
+      background: rgba(6, 14, 30, 0.96);
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.6rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--ff-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--cyan);
+    }
+
+    /* ─── HERO upgrades ─── */
+    .hero-name em {
+      background: linear-gradient(120deg, var(--cyan) 0%, var(--cyan2) 35%, var(--gold) 75%, var(--cyan) 100%);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 220% center;
+      }
+    }
+
+    .hero-role .typed-role {
+      color: var(--cyan2);
+      font-style: normal;
+    }
+
+    .hero-role .caret {
+      display: inline-block;
+      width: 2px;
+      height: 1.05em;
+      background: var(--cyan);
+      margin-left: 2px;
+      vertical-align: -0.15em;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* photo glare sweep */
+    .photo-ring img {
+      transition: filter 0.4s;
+    }
+
+    .photo-ring:hover img {
+      filter: contrast(1.08) brightness(1.06);
+    }
+
+    .photo-glow {
+      position: absolute;
+      inset: -40px;
+      border-radius: 50%;
+      z-index: -1;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 65%);
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: scale(0.92);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    /* ─── MARQUEE band ─── */
+    .marquee {
+      background: var(--navy2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 1.4rem 0;
+      position: relative;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3.5rem;
+      width: max-content;
+      animation: scroll-x 32s linear infinite;
+    }
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--muted2);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      color: var(--cyan);
+      font-size: 0.8rem;
+    }
+
+    @keyframes scroll-x {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ─── SERVICES / What I Do ─── */
+    #services {
+      background: var(--navy);
+    }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .svc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem 1.9rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.35s;
+      pointer-events: none;
+      background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.12), transparent 45%);
+    }
+
+    .svc-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border2);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .svc-card:hover::before {
+      opacity: 1;
+    }
+
+    .svc-ico {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .svc-title {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .svc-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* card spotlight applied to skill + cert cards too */
+    .sk-card::after,
+    .cert-c::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.35s;
+      pointer-events: none;
+      background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.1), transparent 45%);
+    }
+
+    .sk-card:hover::after,
+    .cert-c:hover::before {
+      opacity: 1;
+    }
+
+    /* ─── back to top ─── */
+    .to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 250;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--card2);
+      border: 1px solid var(--border2);
+      color: var(--cyan);
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+      pointer-events: none;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .to-top.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .to-top:hover {
+      background: var(--cyan);
+      color: var(--navy);
+      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.35);
+    }
+
+    /* stat hover */
+    .stat {
+      transition: transform 0.25s;
+    }
+
+    .stat:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat:hover .stat-n {
+      text-shadow: 0 0 22px rgba(56, 189, 248, 0.5);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        gap: 3rem;
+      }
+
+      .hero-photo-wrap {
+        order: -1;
+      }
+
+      .photo-ring,
+      .photo-ring img {
+        width: 240px;
+        height: 240px;
+      }
+
+      .photo-badge {
+        display: none;
+      }
+
+      .about-layout,
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-block {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .cursor-glow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem 2rem;
+      }
+    }
+
+    /* ─── accessibility: respect reduced motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .marquee-track {
+        animation: none !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .cursor-glow,
+      .photo-glow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Animated background -->
+  <div class="bg-stars" id="stars"></div>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <!-- ─── NAV ─── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">Ishika <span>Tyagi</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">What I Do</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Credentials</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#services">What I Do</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Credentials</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="hero-left">
+      <div class="hero-availability">
+        <div class="dot-pulse"></div>Open to New Opportunities
+      </div>
+      <div class="hero-greeting">// Hello, I'm</div>
+      <h1 class="hero-name">Ishika<br /><em>Tyagi</em></h1>
+      <p class="hero-role">CRC Certified Medical Coder &amp; <span class="typed-role"
+          data-roles="Chart Auditor|HCC &amp; RxHCC Specialist|Risk Adjustment Coder|ICD-10-CM Expert">Chart
+          Auditor</span><span class="caret" aria-hidden="true"></span></p>
+      <p class="hero-desc">
+        Specializing in <strong>HCC &amp; RxHCC</strong> risk adjustment coding at <strong>CorroHealth</strong> —
+        consistently ranked among top performers in quality and production.
+        Clinical edge from <strong>B.Pharm</strong> background elevates every chart review.
+      </p>
+      <div class="hero-btns">
+        <a href="#experience" class="btn-p">View Experience →</a>
+        <a href="https://drive.google.com/file/d/1b5Oa4fijyayNRiml690oPRwlhJAdGjPK/view?usp=drivesdk" download
+          class="btn-d">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z" />
+          </svg>
+          Download Resume
+        </a>
+        <a href="#contact" class="btn-o">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n" data-count="1.6" data-suffix="+" data-decimals="1">1.6+</div>
+          <div class="stat-l">Years Exp.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">CRC</div>
+          <div class="stat-l">AAPC Certified</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">HCC</div>
+          <div class="stat-l">Risk Adjustment</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" data-count="8.0" data-decimals="1">8.0</div>
+          <div class="stat-l">CGPA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="photo-ring">
+        <div class="photo-glow"></div>
+        <img src="photo.png" alt="Ishika Tyagi — CRC Certified Medical Coder" />
+        <div class="photo-badge">
+          <div class="photo-badge-top">Certification</div>
+          <div class="photo-badge-val">CRC</div>
+          <div class="photo-badge-sub">AAPC Certified</div>
+        </div>
+        <div class="photo-badge2">
+          <div class="photo-badge2-label">Current</div>
+          <div class="photo-badge2-name">CorroHealth</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">HCC Coding</span>
+      <span class="marquee-item">RxHCC</span>
+      <span class="marquee-item">ICD-10-CM</span>
+      <span class="marquee-item">Chart Auditing</span>
+      <span class="marquee-item">Risk Adjustment</span>
+      <span class="marquee-item">CMS Compliance</span>
+      <span class="marquee-item">RADV</span>
+      <span class="marquee-item">Medicare Advantage</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">HCC Coding</span>
+      <span class="marquee-item">RxHCC</span>
+      <span class="marquee-item">ICD-10-CM</span>
+      <span class="marquee-item">Chart Auditing</span>
+      <span class="marquee-item">Risk Adjustment</span>
+      <span class="marquee-item">CMS Compliance</span>
+      <span class="marquee-item">RADV</span>
+      <span class="marquee-item">Medicare Advantage</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="s-tag">// 01 — About</div>
+      <h2 class="s-title">Who I Am</h2>
+      <div class="s-line"></div>
+      <div class="about-layout">
+        <div class="about-text reveal">
+          <p>I am a <strong>CRC-certified Medical Coder</strong> with 1.6 years of hands-on experience in HCC, RxHCC,
+            and ICD-10-CM coding — consistently ranked among top performers in quality and production at
+            <em>CorroHealth</em>, one of the largest health information management organizations in the US.
+          </p>
+          <p>My background in <strong>B.Pharm (8.0 CGPA, MIET)</strong> gives me a clinical edge that most coders don't
+            have — a deep understanding of drug-disease relationships, complex diagnoses, and pharmacological
+            documentation that directly strengthens RxHCC and risk adjustment coding accuracy.</p>
+          <p>I bring precision, compliance, and clinical depth to every chart I review — working across multiple
+            concurrent client projects while maintaining exceptional quality and <strong>above-target production
+              benchmarks</strong>.</p>
+        </div>
+        <div class="about-info-grid reveal reveal-delay-2">
+          <div class="info-row">
+            <div class="info-icon">🏥</div>
+            <div>
+              <div class="info-label">Current Role</div>
+              <div class="info-val">Medical Coder — CorroHealth</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Location</div>
+              <div class="info-val">Noida, Uttar Pradesh, India</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🎓</div>
+            <div>
+              <div class="info-label">Education</div>
+              <div class="info-val">B.Pharm · MIET · 8.0 CGPA</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🏆</div>
+            <div>
+              <div class="info-label">Certification</div>
+              <div class="info-val">CRC — AAPC Certified</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-val">ishikatyagi801@gmail.com</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🌐</div>
+            <div>
+              <div class="info-label">Languages</div>
+              <div class="info-val">English (Professional) · Hindi (Native)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES / WHAT I DO ─── -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="s-tag">// 02 — What I Do</div>
+      <h2 class="s-title">Areas of Focus</h2>
+      <div class="s-line"></div>
+      <div class="svc-grid">
+        <div class="svc-card reveal" data-spotlight>
+          <div class="svc-ico">🩺</div>
+          <div class="svc-title">HCC &amp; RxHCC Coding</div>
+          <div class="svc-desc">Accurate risk adjustment coding for Medicare Advantage (Part C) and Part D — capturing
+            every supported diagnosis to reflect true patient acuity.</div>
+        </div>
+        <div class="svc-card reveal reveal-delay-1" data-spotlight>
+          <div class="svc-ico">🔍</div>
+          <div class="svc-title">Chart Auditing</div>
+          <div class="svc-desc">Independent audits that validate coding accuracy, surface discrepancies, and ensure full
+            alignment with CMS and RADV audit standards.</div>
+        </div>
+        <div class="svc-card reveal reveal-delay-2" data-spotlight>
+          <div class="svc-ico">📋</div>
+          <div class="svc-title">ICD-10-CM Abstraction</div>
+          <div class="svc-desc">Precise code assignment from physician notes, clinical records, and discharge summaries
+            — compliant, complete, and audit-ready.</div>
+        </div>
+        <div class="svc-card reveal" data-spotlight>
+          <div class="svc-ico">🤝</div>
+          <div class="svc-title">CDI Collaboration</div>
+          <div class="svc-desc">Partnering with clinical documentation teams to resolve coding queries and close
+            documentation gaps before they affect outcomes.</div>
+        </div>
+        <div class="svc-card reveal reveal-delay-1" data-spotlight>
+          <div class="svc-ico">💊</div>
+          <div class="svc-title">Clinical Insight</div>
+          <div class="svc-desc">A B.Pharm foundation brings real understanding of drug–disease relationships that
+            sharpens RxHCC and complex diagnosis coding.</div>
+        </div>
+        <div class="svc-card reveal reveal-delay-2" data-spotlight>
+          <div class="svc-ico">✅</div>
+          <div class="svc-title">Quality &amp; Compliance</div>
+          <div class="svc-desc">Sustained top-tier quality and above-target production across multiple concurrent client
+            projects, with payer-compliance at the core.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ─── -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="s-tag">// 03 — Skills</div>
+      <h2 class="s-title">Expertise</h2>
+      <div class="s-line"></div>
+      <div class="skills-layout">
+        <div class="sk-card reveal">
+          <div class="sk-card-number">01</div>
+          <div class="sk-cat">Core Coding</div>
+          <div class="sk-tags"><span class="sk-tag">HCC Coding</span><span class="sk-tag">RxHCC Coding</span><span
+              class="sk-tag">ICD-10-CM</span><span class="sk-tag">CPT Coding</span><span class="sk-tag">Chart
+              Auditing</span></div>
+        </div>
+        <div class="sk-card reveal reveal-delay-1">
+          <div class="sk-card-number">02</div>
+          <div class="sk-cat">Risk Adjustment</div>
+          <div class="sk-tags"><span class="sk-tag">Medicare Advantage</span><span class="sk-tag">Medicare Part
+              C</span><span class="sk-tag">Medicare Part D</span><span class="sk-tag">RADV Compliance</span><span
+              class="sk-tag">CMS Guidelines</span></div>
+        </div>
+        <div class="sk-card reveal reveal-delay-2">
+          <div class="sk-card-number">03</div>
+          <div class="sk-cat">Clinical &amp; Documentation</div>
+          <div class="sk-tags"><span class="sk-tag">Clinical Documentation</span><span class="sk-tag">CDI</span><span
+              class="sk-tag">Medical Terminology</span><span class="sk-tag">Pharmacology</span><span
+              class="sk-tag">Pathophysiology</span></div>
+        </div>
+        <div class="sk-card reveal reveal-delay-3">
+          <div class="sk-card-number">04</div>
+          <div class="sk-cat">Professional</div>
+          <div class="sk-tags"><span class="sk-tag">Multi-project Delivery</span><span class="sk-tag">Quality
+              Auditing</span><span class="sk-tag">Payer Compliance</span><span class="sk-tag">MS Excel</span><span
+              class="sk-tag">Attention to Detail</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="s-tag">// 04 — Experience</div>
+      <h2 class="s-title">Work History</h2>
+      <div class="s-line"></div>
+      <div class="exp-wrap reveal">
+        <div class="exp-block">
+          <div class="exp-left">
+            <div class="exp-company-name">CorroHealth</div>
+            <div class="exp-period">Oct 2023 – Present<br />1 year 6 months</div>
+            <div class="exp-loc">📍 Noida</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title-role">Medical Coder<br />HCC, RxHCC &amp; ICD-10-CM</div>
+            <ul class="exp-list">
+              <li>Perform HCC and RxHCC coding for Medicare Advantage (Part C) and Medicare Part D risk adjustment
+                programs across multiple concurrent client projects.</li>
+              <li>Conduct independent chart audits to validate coding accuracy, identify discrepancies, and ensure full
+                compliance with CMS and RADV audit standards.</li>
+              <li>Assign ICD-10-CM codes from physician documentation, medical records, clinical notes, and discharge
+                summaries with precision and compliance.</li>
+              <li>Consistently maintain exceptional coding quality, ranking among top performers in all internal quality
+                audits.</li>
+              <li>Deliver significantly above-target production output, regularly surpassing departmental benchmarks
+                while maintaining accuracy simultaneously.</li>
+              <li>Recognized for sustaining high-quality, high-volume performance across multiple concurrent projects in
+                risk adjustment coding.</li>
+              <li>Collaborate with CDI and clinical documentation teams to resolve coding queries and close
+                documentation gaps.</li>
+              <li>Stay current with annual HCC/RxHCC model updates, ICD-10-CM code changes, and evolving CMS risk
+                adjustment guidelines.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CERTIFICATIONS ─── -->
+  <section id="certifications">
+    <div class="section-inner">
+      <div class="s-tag">// 05 — Credentials</div>
+      <h2 class="s-title">Certifications</h2>
+      <div class="s-line"></div>
+      <div class="cert-layout">
+        <div class="cert-c reveal">
+          <div class="cert-icon">🏆</div>
+          <div>
+            <div class="cert-name">Certified Risk Adjustment Coder</div>
+            <div class="cert-issuer">CRC · AAPC</div>
+            <div class="cert-desc">Validates expertise in risk adjustment methodology, HCC coding, and CMS compliance
+              for Medicare Advantage programs.</div>
+          </div>
+        </div>
+        <div class="cert-c reveal reveal-delay-1">
+          <div class="cert-icon">🎯</div>
+          <div>
+            <div class="cert-name">Certified Professional Coder</div>
+            <div class="cert-issuer">CPC · AAPC · In Pursuit</div>
+            <div class="cert-desc">Strengthens outpatient and physician-based coding credibility — next certification
+              milestone.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EDUCATION ─── -->
+  <section id="education">
+    <div class="section-inner">
+      <div class="s-tag">// 06 — Education</div>
+      <h2 class="s-title">Academic Background</h2>
+      <div class="s-line"></div>
+      <div class="edu-c reveal">
+        <div class="edu-ico">🎓</div>
+        <div>
+          <div class="edu-deg">Bachelor of Pharmacy (B.Pharm)</div>
+          <div class="edu-school">Meerut Institute of Engineering and Technology (MIET)</div>
+          <div class="edu-date">June 2020 – October 2024</div>
+          <div class="edu-cgpa-pill">CGPA: 8.0 / 10</div>
+          <div class="edu-courses">Relevant coursework: Pharmacology · Pathophysiology · Human Anatomy &amp; Physiology
+            · Medicinal Chemistry · Pharmaceutical Chemistry — providing a strong clinical foundation directly
+            applicable to HCC, RxHCC coding and health information management.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner reveal">
+        <div class="s-tag" style="text-align:center">// 07 — Contact</div>
+        <h2 class="s-title">Let's Connect</h2>
+        <div class="s-line" style="margin: 0 auto 2rem;"></div>
+        <p class="contact-sub">Open to opportunities in Risk Adjustment Coding, Chart Auditing, CDI, and Health
+          Information Management. Feel free to reach out!</p>
+        <div class="contact-cards">
+          <a href="mailto:ishikatyagi801@gmail.com" class="contact-card">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+            ishikatyagi801@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/ishika-tyagimedicalcoder" target="_blank" class="contact-card">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn Profile
+          </a>
+          <a href="https://drive.google.com/file/d/1b5Oa4fijyayNRiml690oPRwlhJAdGjPK/view?usp=drivesdk" download
+            class="contact-card">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BACK TO TOP ─── -->
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <span>© 2025 Ishika Tyagi · All rights reserved</span>
+    <span>Design and Developed by :<a href="https://theshaguntyagi.github.io/PORTFOLIO/CARD%20STYLE/card.html"
+        target="_blank">Shagun Tyagi with ❤️</a></span>
+    <span>CRC Certified · <a href="https://www.linkedin.com/in/ishika-tyagimedicalcoder" target="_blank">LinkedIn</a> ·
+      Noida, India</span>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    // ─── Floating star particles ───
+    const container = document.getElementById('stars');
+    if (!reduceMotion) {
+      for (let i = 0; i < 55; i++) {
+        const s = document.createElement('span');
+        const size = Math.random() * 2.5 + 0.5;
+        s.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random() * 100}%; top:${Math.random() * 100}%;
+        --d:${3 + Math.random() * 5}s; --delay:${Math.random() * 6}s;
+      `;
+        container.appendChild(s);
+      }
+    }
+
+    // ─── Nav scroll: shrink, active link, progress bar (rAF-throttled) ───
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('scrollProgress');
+    const toTop = document.getElementById('toTop');
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-links a');
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
+      toTop.classList.toggle('show', y > 600);
+
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+
+      let cur = '';
+      sections.forEach(s => { if (y >= s.offsetTop - 140) cur = s.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+    onScroll();
+
+    // ─── Scroll reveal ───
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ─── Mobile menu ───
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function closeMenu() { navToggle.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // ─── Back to top ───
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
+
+    // ─── Count-up stats (on reveal) ───
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      if (reduceMotion) { el.textContent = target.toFixed(decimals) + suffix; return; }
+      const dur = 1400; let start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toFixed(decimals) + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    const countIO = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-n[data-count]').forEach(el => countIO.observe(el));
+
+    // ─── Typed rotating role ───
+    (function typed() {
+      const el = document.querySelector('.typed-role');
+      if (!el || reduceMotion) return;
+      const roles = el.dataset.roles.split('|');
+      let ri = 0, ci = 0, deleting = false;
+      el.textContent = '';
+      function tick() {
+        const word = roles[ri];
+        el.textContent = word.slice(0, ci);
+        if (!deleting && ci < word.length) { ci++; setTimeout(tick, 65); }
+        else if (!deleting && ci === word.length) { deleting = true; setTimeout(tick, 1600); }
+        else if (deleting && ci > 0) { ci--; setTimeout(tick, 35); }
+        else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 250); }
+      }
+      tick();
+    })();
+
+    // ─── Card spotlight (skill, cert, service cards) — desktop only, rAF ───
+    if (finePointer && !reduceMotion) {
+      const spotlightCards = document.querySelectorAll('.sk-card, .cert-c, .svc-card');
+      spotlightCards.forEach(card => {
+        card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      // ─── Cursor glow follow ───
+      const glow = document.getElementById('cursorGlow');
+      let gx = 0, gy = 0, gtick = false;
+      window.addEventListener('pointermove', e => {
+        gx = e.clientX; gy = e.clientY;
+        glow.style.opacity = '1';
+        if (!gtick) {
+          requestAnimationFrame(() => { glow.style.transform = `translate(${gx}px, ${gy}px)`; gtick = false; });
+          gtick = true;
+        }
+      }, { passive: true });
+      document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+
+      // ─── Subtle magnetic buttons ───
+      document.querySelectorAll('.btn-p, .btn-o').forEach(btn => {
+        btn.addEventListener('pointermove', e => {
+          const r = btn.getBoundingClientRect();
+          const mx = e.clientX - r.left - r.width / 2;
+          const my = e.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${mx * 0.15}px, ${my * 0.25 - 3}px)`;
+        });
+        btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+      });
+
+      // ─── Hero photo subtle tilt ───
+      const ring = document.querySelector('.photo-ring');
+      if (ring) {
+        const wrap = ring.parentElement;
+        wrap.addEventListener('pointermove', e => {
+          const r = wrap.getBoundingClientRect();
+          const rx = ((e.clientY - r.top) / r.height - 0.5) * -8;
+          const ry = ((e.clientX - r.left) / r.width - 0.5) * 8;
+          ring.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        });
+        wrap.addEventListener('pointerleave', () => { ring.style.transform = ''; });
+        ring.style.transition = 'transform 0.3s ease';
+      }
+    }
+  </script>
+</body>
+
+</html>
